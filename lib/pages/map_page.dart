@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MapPage extends StatelessWidget {
   final String text = "Map Page";
