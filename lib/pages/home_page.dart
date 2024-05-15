@@ -40,7 +40,9 @@ class _HomePageBody extends StatelessWidget {
     final UiProvider uiProvider = Provider.of<UiProvider>(context);
     final currentIndex = uiProvider.selectedMenuOpt;
 
-    DBProvider.db.database; // TODO: show temp database
+    // TEMP dev database
+    final tempScan = ScanModel(tipo: 'http', valor: 'https://google.com');
+    DBProvider.db.newScan(tempScan);
 
     switch (currentIndex) {
       case 0:
