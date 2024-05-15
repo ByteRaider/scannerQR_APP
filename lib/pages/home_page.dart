@@ -40,11 +40,15 @@ class _HomePageBody extends StatelessWidget {
     final UiProvider uiProvider = Provider.of<UiProvider>(context);
     final currentIndex = uiProvider.selectedMenuOpt;
 
-    // TEMP dev database
-    //  final tempScan = ScanModel(tipo: 'http', valor: 'https://google.com');
+    // TEMP dev database:
+    //final tempScan = ScanModel(tipo: 'http', valor: 'https://google.com');
     //DBProvider.db.newScan(tempScan);
-    //    DBProvider.db.getScanById(5).then((scan) => print(scan?.valor));
-    DBProvider.db.getScansAll().then((scans) => print(scans.toString()));
+    //DBProvider.db.getScanById(5).then((scan) => print(scan?.valor));
+    //DBProvider.db.getScansAll().then((scans) => print(scans.toString()));
+    //DBProvider.db.getScansByType('http').then((scans) => print(scans.toString()));
+    //DBProvider.db.updateScan(tempScan);
+    //DBProvider.db.deleteScan(5);
+    DBProvider.db.deleteAllScans().then((scans) => print(scans.toString()));
 
     switch (currentIndex) {
       case 0:
