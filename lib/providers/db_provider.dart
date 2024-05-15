@@ -1,8 +1,10 @@
+export 'package:qr_reader/models/scan_model.dart';
+import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
+import 'package:qr_reader/models/models.dart';
 import 'package:qr_reader/models/scan_model.dart';
-export 'package:qr_reader/models/scan_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DBProvider {
@@ -60,5 +62,26 @@ class DBProvider {
     final res = await db.insert('Scans', newScan.toJson());
     print('INSERTED ID: $res');
     return res;
+  }
+
+  Future<ScanModel?> getScanById(int id) async {
+    final db = await database;
+    final res = await db.query('Scans', where: 'id = ?', whereArgs: [id]);
+    return res.isNotEmpty ? ScanModel.fromJson(res.first) : null;
+  }
+
+  Future<List<ScanModel>> getScansAll() async {
+    final db = await database;
+    final res = await db.query('Scans');
+    return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
+  }
+
+  Future<List<ScanModel>> getScansByType(String tipo) async {
+    final db = await database;
+    //final res = await db.query('Scans');
+    final res = await db.rawQuery('''
+    SELECT * FROM Scans WHERE tipo = '$tipo'
+    ''');
+    return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
   }
 }
