@@ -60,13 +60,13 @@ class _HomePageBody extends StatelessWidget {
     switch (currentIndex) {
       case 0:
         scanListProvider.loadScansByType('geo');
-        return const MapPage();
+        return const MapHistoryPage();
       case 1:
         scanListProvider.loadScansByType('http');
         return const AddressesPage();
 
       default:
-        return const MapHistoryPage();
+        return const HomePage();
     }
   }
 }

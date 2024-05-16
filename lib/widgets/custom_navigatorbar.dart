@@ -11,13 +11,12 @@ class CustomNavigatorbar extends StatelessWidget {
     final int currentIndex = uiProvider.selectedMenuOpt;
     return BottomNavigationBar(
       onTap: (i) => uiProvider.selectedMenuOpt = i,
-      //onTap: (i) => uiProvider.selectedMenuOpt = i,
       currentIndex: currentIndex,
       elevation: 0,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Maps'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.compass_calibration), label: 'Compass')
+            icon: Icon(Icons.compass_calibration), label: 'Sites:')
       ],
     );
   }

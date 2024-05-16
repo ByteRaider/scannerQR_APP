@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         title: 'QR Reader',
         initialRoute: 'home',
         routes: {
-          '/': (_) => const HomePage(),
+          'home': (_) => const HomePage(),
           'map': (_) => const MapPage(),
         },
         theme: themeData,
