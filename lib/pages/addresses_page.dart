@@ -5,8 +5,19 @@ class AddressesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Addresses Page'),
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (_, index) => ListTile(
+        leading: Icon(
+          Icons.map,
+          color: Theme.of(context).primaryColor,
+        ),
+        title: const Text('Address: '),
+        subtitle: Text('ID:$index'),
+        trailing: const Icon(Icons.keyboard_arrow_right),
+        onTap: () =>
+            Navigator.pushNamed(context, 'map', arguments: 'ID:$index'),
+      ),
     );
   }
 }
