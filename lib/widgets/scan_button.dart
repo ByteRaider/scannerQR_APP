@@ -10,13 +10,13 @@ class ScanButton extends StatelessWidget {
     return FloatingActionButton(
         elevation: 0,
         onPressed: () async {
-          const barcodeScanRes = 'https://google.com';
+          const barcodeScanRes = 'https://www.google.com';
           final ScanListProvider scanListProvider =
               Provider.of<ScanListProvider>(context, listen: false);
           scanListProvider.newScan(barcodeScanRes);
           scanListProvider.newScan('geo:40.750000, -74.000000');
-          scanListProvider.newScan('http://gmail.com');
-          scanListProvider.newScan('geo:49.750000, -74.000000');
+          scanListProvider.newScan('http://www.gmail.com');
+          scanListProvider.newScan('geo:49.750420, -74.000090');
         });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_reader/utils/utils.dart';
 import 'package:qr_reader/providers/scan_list_provider.dart';
 
 class ScanTiles extends StatelessWidget {
@@ -30,8 +31,7 @@ class ScanTiles extends StatelessWidget {
           title: Text(scans[index].valor.toString()),
           subtitle: Text(scans[index].id.toString()),
           trailing: const Icon(Icons.keyboard_arrow_right),
-          onTap: () =>
-              Navigator.pushNamed(context, 'map', arguments: 'ID:$index'),
+          onTap: () => launchURL(context, scans[index]),
         ),
       ),
     );
