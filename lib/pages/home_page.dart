@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
         title: Text(text),
         actions: [
           IconButton(
+            tooltip: 'Delete all scans',
             icon: const Icon(Icons.delete_forever_outlined),
             onPressed: () {
               Provider.of<ScanListProvider>(context, listen: false)
