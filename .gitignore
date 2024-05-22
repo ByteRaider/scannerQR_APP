@@ -1,3 +1,5 @@
+# Untracked API
+android/app/src/main/AndroidManifest.xml 
 # Miscellaneous
 .vscode/
 *.class
