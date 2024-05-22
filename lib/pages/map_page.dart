@@ -28,17 +28,31 @@ class _MapPageState extends State<MapPage> {
         markerId: const MarkerId('geo-location'), position: scan.getLatLng()));
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Map Location - ${scan.valor}'),
-        ),
-        body: GoogleMap(
-          myLocationButtonEnabled: false,
-          markers: markers,
-          mapType: MapType.satellite,
-          initialCameraPosition: initialCameraPosition,
-          onMapCreated: (GoogleMapController controller) {
-            _controller.complete(controller);
-          },
-        ));
+      appBar: AppBar(
+        title: Text('Map Location - ${scan.valor}'),
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.location_on_outlined),
+              onPressed: () async {
+                final GoogleMapController controller = await _controller.future;
+                controller.animateCamera(
+                    CameraUpdate.newCameraPosition(CameraPosition(
+                  target: scan.getLatLng(),
+                  zoom: 17.0,
+                  tilt: 59.440717,
+                )));
+              })
+        ],
+      ),
+      body: GoogleMap(
+        myLocationButtonEnabled: false,
+        markers: markers,
+        mapType: MapType.satellite,
+        initialCameraPosition: initialCameraPosition,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
+    );
   }
 }

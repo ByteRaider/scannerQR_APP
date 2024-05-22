@@ -22,7 +22,7 @@ class ScanButton extends StatelessWidget {
           // scanListProvider.newScan('http://www.gmail.com');
           // scanListProvider.newScan('geo:49.750420, -74.000090');
           final scan = await scanListProvider.newScan(barcodeScanRes);
-          launchURL(context, scan);
+          launchURL(!context.mounted ? context : context, scan);
         });
   }
 }
