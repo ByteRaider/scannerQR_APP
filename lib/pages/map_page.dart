@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:qr_reader/models/scan_model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -24,13 +23,18 @@ class _MapPageState extends State<MapPage> {
       zoom: 17.0,
       tilt: 59.440717,
     );
+    Set<Marker> markers = <Marker>{};
+    markers.add(Marker(
+        markerId: const MarkerId('geo-location'), position: scan.getLatLng()));
 
     return Scaffold(
         appBar: AppBar(
           title: Text('Map Location - ${scan.valor}'),
         ),
         body: GoogleMap(
-          mapType: MapType.hybrid,
+          myLocationButtonEnabled: false,
+          markers: markers,
+          mapType: MapType.satellite,
           initialCameraPosition: initialCameraPosition,
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
