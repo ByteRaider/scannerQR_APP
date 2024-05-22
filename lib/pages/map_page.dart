@@ -17,12 +17,14 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    const CameraPosition initialCameraPosition = CameraPosition(
-      target: LatLng(37.42796133580664, -122.085749655962),
-      zoom: 14.4746,
-    );
     final ScanModel scan =
         ModalRoute.of(context)?.settings.arguments as ScanModel;
+    final CameraPosition initialCameraPosition = CameraPosition(
+      target: scan.getLatLng(),
+      zoom: 17.0,
+      tilt: 59.440717,
+    );
+
     return Scaffold(
         appBar: AppBar(
           title: Text('Map Location - ${scan.valor}'),
